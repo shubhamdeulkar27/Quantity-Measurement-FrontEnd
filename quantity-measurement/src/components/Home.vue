@@ -4,13 +4,14 @@
       <b>{{ homeText }}</b>
     </div>
     <div id="home-container">
-      <div id="home-container-item-1"><Length /></div>
+      <div id="home-container-item-1"><Length /><Temperature /></div>
       <div id="home-container-item-2"></div>
     </div>
   </div>
 </template>
 <script>
 import Length from "./Length.vue";
+import Temperature from "./Temperature.vue";
 export default {
   name: "Home",
   data() {
@@ -19,7 +20,8 @@ export default {
     };
   },
   components: {
-    Length
+    Length,
+    Temperature
   }
 };
 </script>
