@@ -4,18 +4,22 @@
       <b>{{ homeText }}</b>
     </div>
     <div id="home-container">
-      <div id="home-container-item-1"></div>
+      <div id="home-container-item-1"><Length /></div>
       <div id="home-container-item-2"></div>
     </div>
   </div>
 </template>
 <script>
+import Length from "./Length.vue";
 export default {
   name: "Home",
   data() {
     return {
       homeText: "CHOOSE TYPE"
     };
+  },
+  components: {
+    Length
   }
 };
 </script>
@@ -39,6 +43,6 @@ export default {
 #home-container-item-1 {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: center;
 }
 </style>
