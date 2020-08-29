@@ -1,7 +1,7 @@
 <template>
   <div id="header">
     <div id="header-top">
-      <div id="quanment">Quanment</div>
+      <div id="quanment"><b>Quanment</b></div>
       <div id="history">History</div>
     </div>
     <div id="header-bottom">{{ headerText }}</div>
@@ -22,6 +22,7 @@ export default {
 <style lang="scss">
 #header {
   font-family: "Poppins", sans-serif;
+  background-color: white;
 }
 #header-top {
   display: flex;
@@ -51,5 +52,6 @@ export default {
   line-height: 30px;
   padding-top: 23px;
   padding-bottom: 22px;
+  opacity: 1;
 }
 </style>
