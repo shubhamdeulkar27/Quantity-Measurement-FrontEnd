@@ -8,26 +8,26 @@
     <md-card-content>
       <md-card-media>
         <img
-          src="../assets/hot-black.png"
-          alt="Temperature"
+          src="../assets/beaker-black.png"
+          alt="Volume"
           class="img"
           v-if="!hovered"
         />
         <img
-          src="../assets/hot.png"
-          alt="Temperature"
+          src="../assets/beaker.png"
+          alt="Volume"
           class="img"
           v-if="hovered"
         />
       </md-card-media>
-      <div class="img-text">Temperature</div>
+      <div class="img-text">Volume</div>
     </md-card-content>
   </div>
 </template>
 
 <script>
 export default {
-  name: "Temperature",
+  name: "Volume",
   data() {
     return {
       hovered: false
@@ -37,7 +37,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-$temperature-color: #fd5160;
+$volume-color: #7224ff;
+
 .md-card {
   width: 173px;
   height: 137px;
@@ -56,17 +57,17 @@ $temperature-color: #fd5160;
   width: auto;
 }
 .md-card-content {
-  margin-top: 15px;
+  margin-top: 20px;
 }
 .img-text {
   font-size: 15px;
   line-height: 19px;
 
-  margin-top: 5px;
+  margin-top: 10px;
 }
 .hovered {
-  border: $temperature-color solid 1px;
-  color: $temperature-color;
-  background-color: #ffeef0;
+  border: $volume-color solid 1px;
+  color: $volume-color;
+  background-color: #e8ddff;
 }
 </style>
