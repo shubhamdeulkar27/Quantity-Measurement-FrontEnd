@@ -1,10 +1,10 @@
 <template>
   <div
     class="md-card"
-    @click="clicked = true"
+    @click="temperatureClickedEvent"
     @mouseover="hovered = true"
     @mouseleave="hovered = false"
-    :class="{ hovered: clicked?true:hovered }"
+    :class="{ hovered: temperatureClicked?true:hovered }"
   >
     <md-card-content>
       <md-card-media>
@@ -12,9 +12,14 @@
           src="../assets/hot-black.png"
           alt="Temperature"
           class="img"
-          v-if="clicked?false:!hovered"
+          v-if="temperatureClicked?false:!hovered"
         />
-        <img src="../assets/hot.png" alt="Temperature" class="img" v-if="clicked?true:hovered" />
+        <img
+          src="../assets/hot.png"
+          alt="Temperature"
+          class="img"
+          v-if="temperatureClicked?true:hovered"
+        />
       </md-card-media>
       <div class="img-text">Temperature</div>
     </md-card-content>
@@ -22,13 +27,28 @@
 </template>
 
 <script>
+import { EventBus } from "./event-bus.js";
 export default {
   name: "Temperature",
+  mounted() {
+    EventBus.$on("lengthClicked", () => {
+      this.temperatureClicked = false;
+    });
+    EventBus.$on("volumeClicked", () => {
+      this.temperatureClicked = false;
+    });
+  },
   data() {
     return {
-      clicked: false,
+      temperatureClicked: false,
       hovered: false,
     };
+  },
+  methods: {
+    temperatureClickedEvent() {
+      this.temperatureClicked = true;
+      EventBus.$emit("temperatureClicked", this.temperatureClicked);
+    },
   },
 };
 </script>

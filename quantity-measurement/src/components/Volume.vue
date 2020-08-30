@@ -1,9 +1,10 @@
 <template>
   <div
     class="md-card"
+    @click="volumeClickedEvent"
     @mouseover="hovered = true"
     @mouseleave="hovered = false"
-    :class="{ hovered: hovered }"
+    :class="{ hovered: volumeClicked?true:hovered }"
   >
     <md-card-content>
       <md-card-media>
@@ -11,14 +12,9 @@
           src="../assets/beaker-black.png"
           alt="Volume"
           class="img"
-          v-if="!hovered"
+          v-if="volumeClicked?false:!hovered"
         />
-        <img
-          src="../assets/beaker.png"
-          alt="Volume"
-          class="img"
-          v-if="hovered"
-        />
+        <img src="../assets/beaker.png" alt="Volume" class="img" v-if="volumeClicked?true:hovered" />
       </md-card-media>
       <div class="img-text">Volume</div>
     </md-card-content>
@@ -26,13 +22,29 @@
 </template>
 
 <script>
+import { EventBus } from "./event-bus.js";
 export default {
   name: "Volume",
+  mounted() {
+    EventBus.$on("lengthClicked", () => {
+      this.volumeClicked = false;
+    });
+    EventBus.$on("temperatureClicked", () => {
+      this.volumeClicked = false;
+    });
+  },
   data() {
     return {
-      hovered: false
+      volumeClicked: false,
+      hovered: false,
     };
-  }
+  },
+  methods: {
+    volumeClickedEvent() {
+      this.volumeClicked = true;
+      EventBus.$emit("volumeClicked", this.volumeClicked);
+    },
+  },
 };
 </script>
 

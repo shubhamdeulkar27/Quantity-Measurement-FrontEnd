@@ -1,15 +1,20 @@
 <template>
   <div
     class="md-card"
-    @click="clicked = true"
+    @click="lengthClickedEvent"
     @mouseover="hovered = true"
     @mouseleave="hovered = false"
-    :class="{ hovered: clicked?true:hovered }"
+    :class="{ hovered: lengthClicked?true:hovered }"
   >
     <md-card-content>
       <md-card-media>
-        <img src="../assets/scale-black.png" alt="Length" class="img" v-if="clicked?false:!hovered" />
-        <img src="../assets/scale.png" alt="Length" class="img" v-if="clicked?true:hovered" />
+        <img
+          src="../assets/scale-black.png"
+          alt="Length"
+          class="img"
+          v-if="lengthClicked?false:!hovered"
+        />
+        <img src="../assets/scale.png" alt="Length" class="img" v-if="lengthClicked?true:hovered" />
       </md-card-media>
       <div class="img-text">Length</div>
     </md-card-content>
@@ -17,13 +22,29 @@
 </template>
 
 <script>
+import { EventBus } from "./event-bus.js";
 export default {
   name: "Length",
+  mounted() {
+    EventBus.$on("temperatureClicked", () => {
+      this.lengthClicked = false;
+    });
+    EventBus.$on("volumeClicked", () => {
+      this.lengthClicked = false;
+    });
+  },
   data() {
     return {
-      clicked: false,
+      lengthClicked: true,
       hovered: false,
     };
+  },
+  methods: {
+    lengthClickedEvent() {
+      this.lengthClicked = true;
+      EventBus.$emit("lengthClicked", this.lengthClicked);
+      console.log("length clicked");
+    },
   },
 };
 </script>

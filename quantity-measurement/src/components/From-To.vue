@@ -18,21 +18,34 @@
 </template>
 
 <script>
+import { EventBus } from "./event-bus.js";
 export default {
   name: "FromTo",
+  mounted() {
+    EventBus.$on("lengthClicked", () => {
+      this.fromOption = [
+        { value: 1, text: "Inch" },
+        { value: 2, text: "Feet" },
+        { value: 3, text: "Yard" },
+      ];
+      this.toOption = [
+        { value: 1, text: "Inch" },
+        { value: 2, text: "Feet" },
+        { value: 3, text: "Yard" },
+      ];
+    });
+    EventBus.$on("temperatureClicked", () => {
+      this.lengthClicked = false;
+    });
+    EventBus.$on("volumeClicked", () => {
+      this.lengthClicked = false;
+    });
+  },
   data() {
     return {
-      fromOption: [
-        { value: 1, text: "Inch" },
-        { value: 2, text: "Feet" },
-        { value: 3, text: "Yard" },
-      ],
+      fromOption: [],
       fromSelected: null,
-      toOption: [
-        { value: 1, text: "Inch" },
-        { value: 2, text: "Feet" },
-        { value: 3, text: "Yard" },
-      ],
+      toOption: [],
       toSelected: null,
     };
   },
