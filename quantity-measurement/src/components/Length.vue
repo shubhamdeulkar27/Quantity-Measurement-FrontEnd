@@ -1,24 +1,15 @@
 <template>
   <div
     class="md-card"
+    @click="clicked = true"
     @mouseover="hovered = true"
     @mouseleave="hovered = false"
     :class="{ hovered: hovered }"
   >
     <md-card-content>
       <md-card-media>
-        <img
-          src="../assets/scale-black.png"
-          alt="Length"
-          class="img"
-          v-if="!hovered"
-        />
-        <img
-          src="../assets/scale.png"
-          alt="Length"
-          class="img"
-          v-if="hovered"
-        />
+        <img src="../assets/scale-black.png" alt="Length" class="img" v-if="!hovered" />
+        <img src="../assets/scale.png" alt="Length" class="img" v-if="hovered" />
       </md-card-media>
       <div class="img-text">Length</div>
     </md-card-content>
@@ -30,9 +21,10 @@ export default {
   name: "Length",
   data() {
     return {
-      hovered: false
+      clicked: false,
+      hovered: false,
     };
-  }
+  },
 };
 </script>
 

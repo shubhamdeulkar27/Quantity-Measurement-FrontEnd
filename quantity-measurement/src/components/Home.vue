@@ -4,8 +4,14 @@
       <b>{{ homeText }}</b>
     </div>
     <div id="home-container">
-      <div id="home-container-item-1"><Length /><Temperature /><Volume /></div>
-      <div id="home-container-item-2"></div>
+      <div id="home-container-item-1">
+        <Length />
+        <Temperature />
+        <Volume />
+      </div>
+      <div id="home-container-item-2">
+        <FromTo />
+      </div>
     </div>
   </div>
 </template>
@@ -13,18 +19,20 @@
 import Length from "./Length.vue";
 import Temperature from "./Temperature.vue";
 import Volume from "./Volume.vue";
+import FromTo from "./From-To.vue";
 export default {
   name: "Home",
   data() {
     return {
-      homeText: "CHOOSE TYPE"
+      homeText: "CHOOSE TYPE",
     };
   },
   components: {
     Length,
     Temperature,
-    Volume
-  }
+    Volume,
+    FromTo,
+  },
 };
 </script>
 <style lang="scss">
@@ -52,5 +60,11 @@ export default {
   width: 43vw;
   position: relative;
   left: 27.5vw;
+}
+#home-container-item-2 {
+  width: 42vw;
+  position: relative;
+  left: 28vw;
+  margin-top: 05vh;
 }
 </style>
