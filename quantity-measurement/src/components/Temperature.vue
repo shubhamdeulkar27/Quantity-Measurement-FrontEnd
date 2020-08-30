@@ -1,9 +1,10 @@
 <template>
   <div
     class="md-card"
+    @click="clicked = true"
     @mouseover="hovered = true"
     @mouseleave="hovered = false"
-    :class="{ hovered: hovered }"
+    :class="{ hovered: clicked?true:hovered }"
   >
     <md-card-content>
       <md-card-media>
@@ -11,14 +12,9 @@
           src="../assets/hot-black.png"
           alt="Temperature"
           class="img"
-          v-if="!hovered"
+          v-if="clicked?false:!hovered"
         />
-        <img
-          src="../assets/hot.png"
-          alt="Temperature"
-          class="img"
-          v-if="hovered"
-        />
+        <img src="../assets/hot.png" alt="Temperature" class="img" v-if="clicked?true:hovered" />
       </md-card-media>
       <div class="img-text">Temperature</div>
     </md-card-content>
@@ -30,9 +26,10 @@ export default {
   name: "Temperature",
   data() {
     return {
-      hovered: false
+      clicked: false,
+      hovered: false,
     };
-  }
+  },
 };
 </script>
 
