@@ -82,5 +82,6 @@ $length-color: #0ec098;
   border: $length-color solid 1px;
   color: $length-color;
   background-color: #edfdf9;
+  box-shadow: 0px 0px 5px rgba($color: #000000, $alpha: 0.3);
 }
 </style>
