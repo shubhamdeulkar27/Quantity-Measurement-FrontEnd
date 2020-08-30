@@ -35,18 +35,40 @@ export default {
       ];
     });
     EventBus.$on("temperatureClicked", () => {
-      this.lengthClicked = false;
+      this.fromOption = [
+        { value: 1, text: "Celsius" },
+        { value: 2, text: "Fahrenheit" },
+      ];
+      this.toOption = [
+        { value: 1, text: "Celsius" },
+        { value: 2, text: "Fahrenheit" },
+      ];
     });
     EventBus.$on("volumeClicked", () => {
-      this.lengthClicked = false;
+      this.fromOption = [
+        { value: 1, text: "Litre" },
+        { value: 2, text: "Millilitre" },
+      ];
+      this.toOption = [
+        { value: 1, text: "Litre" },
+        { value: 2, text: "Millilitre" },
+      ];
     });
   },
   data() {
     return {
-      fromOption: [],
-      fromSelected: null,
-      toOption: [],
-      toSelected: null,
+      fromOption: [
+        { value: 1, text: "Inch" },
+        { value: 2, text: "Feet" },
+        { value: 3, text: "Yard" },
+      ],
+      fromSelected: 1,
+      toOption: [
+        { value: 1, text: "Inch" },
+        { value: 2, text: "Feet" },
+        { value: 3, text: "Yard" },
+      ],
+      toSelected: 2,
     };
   },
 };
