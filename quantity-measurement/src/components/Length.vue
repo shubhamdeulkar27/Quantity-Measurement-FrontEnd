@@ -4,12 +4,12 @@
     @click="clicked = true"
     @mouseover="hovered = true"
     @mouseleave="hovered = false"
-    :class="{ hovered: hovered }"
+    :class="{ hovered: clicked?true:hovered }"
   >
     <md-card-content>
       <md-card-media>
-        <img src="../assets/scale-black.png" alt="Length" class="img" v-if="!hovered" />
-        <img src="../assets/scale.png" alt="Length" class="img" v-if="hovered" />
+        <img src="../assets/scale-black.png" alt="Length" class="img" v-if="clicked?false:!hovered" />
+        <img src="../assets/scale.png" alt="Length" class="img" v-if="clicked?true:hovered" />
       </md-card-media>
       <div class="img-text">Length</div>
     </md-card-content>
