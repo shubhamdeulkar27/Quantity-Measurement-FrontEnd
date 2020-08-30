@@ -81,5 +81,6 @@ $volume-color: #7224ff;
   border: $volume-color solid 1px;
   color: $volume-color;
   background-color: #e8ddff;
+  box-shadow: 0px 0px 5px rgba($color: #000000, $alpha: 0.3);
 }
 </style>
