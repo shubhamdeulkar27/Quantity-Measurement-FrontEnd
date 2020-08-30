@@ -85,5 +85,6 @@ $temperature-color: #fd5160;
   border: $temperature-color solid 1px;
   color: $temperature-color;
   background-color: #ffeef0;
+  box-shadow: 0px 0px 5px rgba($color: #000000, $alpha: 0.3);
 }
 </style>
