@@ -2,16 +2,16 @@
   <div id="from-to">
     <div class="from-to-content">
       <div class="from-to-text">FROM</div>
-      <input type="number" class="from-to-input" />
+      <input type="number" class="from-to-input" v-model.lazy="fromValue" />
       <select class="select-unit" v-model="fromSelected">
-        <option v-for="unit in fromOption" :value="unit.value">{{unit.text}}</option>
+        <option v-bind:key="unit.id" v-for="unit in fromOption" :value="unit.value">{{unit.text}}</option>
       </select>
     </div>
     <div class="from-to-content">
       <div class="from-to-text">TO</div>
-      <input type="number" class="from-to-input" />
+      <input type="number" class="from-to-input" v-model.lazy="toValue" />
       <select class="select-unit" v-model="toSelected">
-        <option v-for="unit in toOption" :value="unit.value">{{unit.text}}</option>
+        <option v-bind:key="unit.id" v-for="unit in toOption" :value="unit.value">{{unit.text}}</option>
       </select>
     </div>
   </div>
@@ -24,48 +24,51 @@ export default {
   mounted() {
     EventBus.$on("lengthClicked", () => {
       this.fromOption = [
-        { value: 1, text: "Inch" },
-        { value: 2, text: "Feet" },
-        { value: 3, text: "Yard" },
+        { id: 1, value: 1, text: "Inch" },
+        { id: 2, value: 2, text: "Feet" },
+        { id: 3, value: 3, text: "Yard" },
       ];
       this.toOption = [
-        { value: 1, text: "Inch" },
-        { value: 2, text: "Feet" },
-        { value: 3, text: "Yard" },
+        { id: 1, value: 1, text: "Inch" },
+        { id: 2, value: 2, text: "Feet" },
+        { id: 3, value: 3, text: "Yard" },
       ];
     });
     EventBus.$on("temperatureClicked", () => {
       this.fromOption = [
-        { value: 1, text: "Celsius" },
-        { value: 2, text: "Fahrenheit" },
+        { id: 1, value: 1, text: "Celsius" },
+        { id: 2, value: 2, text: "Fahrenheit" },
       ];
       this.toOption = [
-        { value: 1, text: "Celsius" },
-        { value: 2, text: "Fahrenheit" },
+        { id: 1, value: 1, text: "Celsius" },
+        { id: 2, value: 2, text: "Fahrenheit" },
       ];
     });
     EventBus.$on("volumeClicked", () => {
       this.fromOption = [
-        { value: 1, text: "Litre" },
-        { value: 2, text: "Millilitre" },
+        { id: 1, value: 1, text: "Litre" },
+        { id: 2, value: 2, text: "Millilitre" },
       ];
       this.toOption = [
-        { value: 1, text: "Litre" },
-        { value: 2, text: "Millilitre" },
+        { id: 1, value: 1, text: "Litre" },
+        { id: 2, value: 2, text: "Millilitre" },
       ];
     });
   },
   data() {
     return {
+      fromValue: 1,
       fromOption: [
-        { value: 1, text: "Inch" },
-        { value: 2, text: "Feet" },
+        { value: 1, text: "Feet" },
+        { value: 2, text: "Inch" },
         { value: 3, text: "Yard" },
       ],
       fromSelected: 1,
+
+      toValue: 12,
       toOption: [
-        { value: 1, text: "Inch" },
-        { value: 2, text: "Feet" },
+        { value: 1, text: "Feet" },
+        { value: 2, text: "Inch" },
         { value: 3, text: "Yard" },
       ],
       toSelected: 2,
