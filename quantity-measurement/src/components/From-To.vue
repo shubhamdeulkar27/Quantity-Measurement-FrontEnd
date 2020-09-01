@@ -2,16 +2,31 @@
   <div id="from-to">
     <div class="from-to-content">
       <div class="from-to-text">FROM</div>
-      <input type="number" class="from-to-input" v-model.lazy="fromValue" />
+      <input
+        type="number"
+        class="from-to-input"
+        v-model.lazy="fromValue"
+        @change="fromValueChanged"
+      />
       <select class="select-unit" v-model="fromSelected">
-        <option v-bind:key="unit.id" v-for="unit in fromOption" :value="unit.value">{{unit.text}}</option>
+        <option
+          v-bind:key="unit.id"
+          v-for="unit in fromOption"
+          :value="unit.text"
+          >{{ unit.text }}</option
+        >
       </select>
     </div>
     <div class="from-to-content">
       <div class="from-to-text">TO</div>
-      <input type="number" class="from-to-input" v-model.lazy="toValue" />
+      <input type="number" class="from-to-input" v-model="toValue" />
       <select class="select-unit" v-model="toSelected">
-        <option v-bind:key="unit.id" v-for="unit in toOption" :value="unit.value">{{unit.text}}</option>
+        <option
+          v-bind:key="unit.id"
+          v-for="unit in toOption"
+          :value="unit.text"
+          >{{ unit.text }}</option
+        >
       </select>
     </div>
   </div>
@@ -26,33 +41,42 @@ export default {
       this.fromOption = [
         { id: 1, value: 1, text: "Inch" },
         { id: 2, value: 2, text: "Feet" },
-        { id: 3, value: 3, text: "Yard" },
+        { id: 3, value: 3, text: "Yard" }
       ];
       this.toOption = [
         { id: 1, value: 1, text: "Inch" },
         { id: 2, value: 2, text: "Feet" },
-        { id: 3, value: 3, text: "Yard" },
+        { id: 3, value: 3, text: "Yard" }
       ];
+      this.fromSelected = "Feet";
+      this.toSelected = "Inch";
+      this.fromValueChanged();
     });
     EventBus.$on("temperatureClicked", () => {
       this.fromOption = [
         { id: 1, value: 1, text: "Celsius" },
-        { id: 2, value: 2, text: "Fahrenheit" },
+        { id: 2, value: 2, text: "Fahrenheit" }
       ];
       this.toOption = [
         { id: 1, value: 1, text: "Celsius" },
-        { id: 2, value: 2, text: "Fahrenheit" },
+        { id: 2, value: 2, text: "Fahrenheit" }
       ];
+      this.fromSelected = "Celsius";
+      this.toSelected = "Fahrenheit";
+      this.fromValueChanged();
     });
     EventBus.$on("volumeClicked", () => {
       this.fromOption = [
         { id: 1, value: 1, text: "Litre" },
-        { id: 2, value: 2, text: "Millilitre" },
+        { id: 2, value: 2, text: "Millilitre" }
       ];
       this.toOption = [
         { id: 1, value: 1, text: "Litre" },
-        { id: 2, value: 2, text: "Millilitre" },
+        { id: 2, value: 2, text: "Millilitre" }
       ];
+      this.fromSelected = "Litre";
+      this.toSelected = "Millilitre";
+      this.fromValueChanged();
     });
   },
   data() {
@@ -61,19 +85,31 @@ export default {
       fromOption: [
         { value: 1, text: "Feet" },
         { value: 2, text: "Inch" },
-        { value: 3, text: "Yard" },
+        { value: 3, text: "Yard" }
       ],
-      fromSelected: 1,
+      fromSelected: "Feet",
 
       toValue: 12,
       toOption: [
         { value: 1, text: "Feet" },
         { value: 2, text: "Inch" },
-        { value: 3, text: "Yard" },
+        { value: 3, text: "Yard" }
       ],
-      toSelected: 2,
+      toSelected: "Inch"
     };
   },
+  methods: {
+    fromValueChanged: function() {
+      const baseURL = "https://localhost:44353/api/Quantity";
+      let quantity = {
+        value: this.fromValue,
+        operationType: this.fromSelected + "To" + this.toSelected
+      };
+      this.$http.post(baseURL, quantity).then(result => {
+        this.toValue = result.data.data.result;
+      });
+    }
+  }
 };
 </script>
 
