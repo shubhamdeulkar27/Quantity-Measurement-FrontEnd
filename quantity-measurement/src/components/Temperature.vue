@@ -73,7 +73,7 @@ $temperature-color: #fd5160;
   width: auto;
 }
 .md-card-content {
-  margin-top: 3vh;
+  margin-top: 2vh;
 }
 .img-text {
   font-size: 15px;
