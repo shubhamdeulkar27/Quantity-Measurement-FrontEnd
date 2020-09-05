@@ -43,7 +43,6 @@ export default {
     lengthClickedEvent() {
       this.lengthClicked = true;
       EventBus.$emit("lengthClicked", this.lengthClicked);
-      console.log("length clicked");
     },
   },
 };
@@ -53,9 +52,9 @@ export default {
 $length-color: #0ec098;
 
 .md-card {
-  width: 173px;
-  height: 137px;
-  margin: 4px;
+  width: 12vw;
+  height: 21vh;
+  margin: 0.6vh;
   display: flex;
   flex-direction: column;
   vertical-align: top;
@@ -70,13 +69,13 @@ $length-color: #0ec098;
   width: auto;
 }
 .md-card-content {
-  margin-top: 20px;
+  margin-top: 3vh;
 }
 .img-text {
   font-size: 15px;
   line-height: 19px;
 
-  margin-top: 10px;
+  margin-top: 2vh;
 }
 .hovered {
   border: $length-color solid 1px;

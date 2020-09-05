@@ -56,9 +56,9 @@ export default {
 <style lang="scss" scoped>
 $temperature-color: #fd5160;
 .md-card {
-  width: 173px;
-  height: 137px;
-  margin: 4px;
+  width: 12vw;
+  height: 21vh;
+  margin: 0.6vh;
   display: flex;
   flex-direction: column;
   vertical-align: top;
@@ -73,13 +73,12 @@ $temperature-color: #fd5160;
   width: auto;
 }
 .md-card-content {
-  margin-top: 15px;
+  margin-top: 3vh;
 }
 .img-text {
   font-size: 15px;
   line-height: 19px;
-
-  margin-top: 5px;
+  margin-top: 1vh;
 }
 .hovered {
   border: $temperature-color solid 1px;

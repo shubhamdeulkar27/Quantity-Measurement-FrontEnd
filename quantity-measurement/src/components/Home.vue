@@ -1,5 +1,6 @@
 <template>
   <div id="home">
+    <Header />
     <div id="home-text">
       <b>{{ homeText }}</b>
     </div>
@@ -16,6 +17,7 @@
   </div>
 </template>
 <script>
+import Header from "./Header.vue";
 import Length from "./Length.vue";
 import Temperature from "./Temperature.vue";
 import Volume from "./Volume.vue";
@@ -28,6 +30,7 @@ export default {
     };
   },
   components: {
+    Header,
     Length,
     Temperature,
     Volume,
@@ -41,7 +44,7 @@ export default {
   height: auto;
 }
 #home-text {
-  margin-top: 50px;
+  margin-top: 8vh;
   margin-left: 28vw;
   text-align: left;
   font-size: 15px;
@@ -51,7 +54,7 @@ export default {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  margin-top: 10px;
+  margin-top: 1vh;
 }
 #home-container-item-1 {
   display: flex;
